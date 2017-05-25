@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { Meteor } from 'meteor/meteor';
 
 // collections
-// import from './../../api/sections';
+
 
 class AddSection extends Component {
   constructor(props) {

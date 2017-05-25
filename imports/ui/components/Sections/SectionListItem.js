@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import { Session } from 'meteor/session';
 
-class SectionsListItem extends Component {
+class SectionListItem extends Component {
   // console.log('section', this.props.section);
   handleClickItem() {
     // console.log('handleClickItem');
@@ -37,8 +37,8 @@ class SectionsListItem extends Component {
   }
 }
 
-SectionsListItem.propTypes = {
+SectionListItem.propTypes = {
   section: PropTypes.object.isRequired,
 };
 
-export default SectionsListItem;
+export default SectionListItem;
