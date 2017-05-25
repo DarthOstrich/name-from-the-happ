@@ -42,6 +42,15 @@ Meteor.methods({
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
+    new SimpleSchema({
+      _id: {
+        type: String,
+        min: 17,
+      },
+    }).validate({
+      _id,
+    });
+    PresentationsCollection.remove({ _id });
   },
 
   // Meteor method for updating Presenations

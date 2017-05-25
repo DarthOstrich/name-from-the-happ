@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
+
 
 class PresentationEdit extends Component {
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.presTitle.value);
-    console.log(this.presId1.value);
-    console.log(this.presId2.value);
-    console.log(this.presId3.value);
-    console.log(this.addNotes.value);
+    // console.log(this.title.value);
+    // console.log(this.presId1.value);
+    // console.log(this.presId2.value);
+    // console.log(this.presId3.value);
+    // console.log(this.notes.value);
+
+    const title = this.title.value;
+    Meteor.call('presentations.insert', title, (err) => {
+      // console.log('presentations insert meteor call');
+      if (err) {
+        this.setState({ error: err.reason });
+      }
+    });
   }
 
   render() {
     return (
-		<div className="boxed-view">
-		  <div className="boxed-view__box">
+<div>
       <h1>Presentation Edit</h1>
       <h2>Edit Presentation</h2>
 
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit.bind(this)} className="boxed-view__form">
 
 {/* Toggle switch to see if it is they are present */}
         <label htmlFor="">Attendence (Present/Not Present)
@@ -33,19 +41,20 @@ class PresentationEdit extends Component {
 {/* Toggle switch to see if it is completed */}
         <label htmlFor="">Status (Completed/Not Present)
           <input type="checkbox"
-            ref={(completed) => { this.completed = completed; }}/>
+            ref={(complete) => { this.complete = complete; }}/>
             {/* <div class="slider"></div> */}
         </label>
   <br/>
+
 {/* section for inputting the presentation title */}
         <label htmlFor="">Presentation Tile
           <input type="text" placeholder="Input Presentation Tile"
-            ref={(presTitle) => { this.presTitle = presTitle; }}/>
+            ref={(title) => { this.title = title; }}/>
         </label>
   <br/>
 {/* Toggle switch to see if it is a group project */}
         <label htmlFor="">Group presentation?
-          <input type="checkbox" ref={(groupPres) => { this.groupPres = groupPres; }}/>
+          <input type="checkbox" ref={(group) => { this.group = group; }}/>
           {/* <div class="slider"></div> */}
         </label>
   <br/>
@@ -61,15 +70,15 @@ class PresentationEdit extends Component {
   <br/>
 {/* section for additional notes */}
         <label htmlFor="">Notes
-          <input type="textarea" ref={(addNotes) => { this.addNotes = addNotes; }}/>
+          <input type="textarea" ref={(notes) => { this.notes = notes; }}/>
         </label>
   <br/>
 {/* Submit buttons */}
-        <button className="" type="submit">Update</button>
+        <button type="submit">Update</button>
         <button type="submit">Delete</button>
       </form>
     </div>
-  </div>
+
 // end of return
     );
 // end of render
