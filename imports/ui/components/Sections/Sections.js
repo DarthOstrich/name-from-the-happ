@@ -5,9 +5,6 @@ import { Tracker } from 'meteor/tracker';
 import AddSection from './AddSection';
 import SectionList from './SectionList';
 
-// collections
-// import SectionsCollection from './../../api/sections';
-
 class Sections extends Component {
   render() {
     return (
