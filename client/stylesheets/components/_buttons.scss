@@ -27,6 +27,10 @@
   color: $concrete;
 }
 
-.button--delete{
-  background-color: $cardinal;
+.button--success {
+  background-color: $button-success;
+}
+
+.button--danger {
+  background-color: $button-danger;
 }

@@ -7,7 +7,8 @@ $concrete: #f2f2f2;
 $white: #ffffff;
 $black: #000000;
 $cerulean: #00aecc;
-$cardinal: #d01c26;
+$coralred: #FF3B3B;
+$mossgreen: #B7E0AD;
 
 ///Main brand color
 $brand-primary: $cerulean;
@@ -19,6 +20,8 @@ $space: 1.4rem;
 $button-bg: $cerulean;
 $button-color: $white;
 $button-pill-color: $cerulean;
+$button-danger: $coralred;
+$button-success: $mossgreen;
 
 // Font sizes
 $base-font-size: 1.6rem;
