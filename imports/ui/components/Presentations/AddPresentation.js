@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Meteor } from 'meteor/meteor';
 
+import PresentationList from './PresentationList';
+
 // collections
 class AddPresentation extends Component {
   constructor(props) {
@@ -48,21 +50,22 @@ class AddPresentation extends Component {
       <div>
         <button className="button button--pill" onClick={ this.openModal }>Add Presentation</button>
 
-
         <Modal
           isOpen={ this.state.modalIsOpen }
           contentLabel="Add Presentation"
-          onAfterOpen={ () => this.title.focus() }
+          onAfterOpen = { () => this.title.focus() }
           onRequestClose={this.closeModal}
           className="boxed-view__box"
-          overlayClassName="boxed-view boxed-view--modal"
-        >
+          overlayClassName="boxed-view boxed-view--modal">
         <form className="boxed-view__form" onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" ref={(title) => { this.title = title; }} />
           <button className="button">Add Presentation</button>
+          <br/>
+            <button className="button button--default" onClick={this.closeModal}>Cancel</button>
         </form>
-        <button className="button button--default" onClick={this.closeModal}>Cancel</button>
       </Modal>
+
+      {/* <PresentationList /> */}
 
       </div>
     );

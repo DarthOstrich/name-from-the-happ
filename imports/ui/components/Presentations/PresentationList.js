@@ -47,7 +47,7 @@ class PresentationList extends Component {
     return (
       <div>
         {this.renderPresentationListItems()}
-        <AddPresentation />;
+        <AddPresentation />
       </div>
     );
   }

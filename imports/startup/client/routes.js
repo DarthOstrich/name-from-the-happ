@@ -43,6 +43,7 @@ const onAuthChange = (isAuthenticated) => {
   }
 };
 
+
 Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
