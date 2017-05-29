@@ -30,7 +30,7 @@ class SectionListItem extends Component {
           <div onClick={this.handleClickItem.bind(this)}>
             <h2>{this.props.section.title}</h2>
           </div>
-          <button onClick={this.handleDelete.bind(this)}>Delete</button>
+          <button onClick={this.handleDelete.bind(this)}>Edit</button>
         </div>
       </div>
     );

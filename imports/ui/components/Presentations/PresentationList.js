@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
 
 import PresentationListItem from './PresentationListItem';
-import AddPresentation from './AddPresentation';
+// import SectionListItem from './SectionListItem';
 
 // collections
 import PresentationsCollection from './../../../api/presentations';
@@ -14,6 +14,7 @@ class PresentationList extends Component {
     super(props);
     this.state = {
       presentations: [],
+      sections: [],
     };
   }
   componentDidMount() {

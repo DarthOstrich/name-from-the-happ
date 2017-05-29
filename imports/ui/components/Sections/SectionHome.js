@@ -8,10 +8,8 @@ class SectionHome extends Component {
   render() {
     return (
       <div>
-        {/* <p>PresentationList Component</p> */}
-		<PresentationList />
-        {/* <p>AddPresentation Component</p> */}
-		<AddPresentation />
+        <PresentationList />
+        <AddPresentation />
       </div>
     );
   }
