@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { Meteor } from 'meteor/meteor';
 
 // collections
-import { SectionsCollection } from './../../api/sections';
+
 
 class AddSection extends Component {
   constructor(props) {
@@ -11,10 +11,15 @@ class AddSection extends Component {
 
     this.state = {
       modalIsOpen: false,
+      error: '',
     };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentDidMount() {
+    // this.title.focus();
   }
 
   openModal() {
@@ -25,24 +30,18 @@ class AddSection extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  handleLogout() {
-
-  }
-
   handleSubmit(e) {
     e.preventDefault();
+    // console.log('handleSubmit');
 
-    const name = this.name.value;
-    const ownerId = Meteor.userId();
+    const title = this.title.value;
 
-    if (name) {
-      SectionsCollection.insert({
-        name,
-        ownerId,
-        presentations: {},
-      });
-      this.name.value = '';
-    }
+    Meteor.call('sections.insert', title, (err) => {
+      // console.log('sections insert meteor call');
+      if (err) {
+        this.setState({ error: err.reason });
+      }
+    });
     this.setState({ modalIsOpen: false });
   }
 
@@ -53,14 +52,13 @@ class AddSection extends Component {
         <Modal
           isOpen={ this.state.modalIsOpen }
           contentLabel="Add Class"
-          onAfterOpen={ () => this.name.focus() }
+          onAfterOpen={ () => this.title.focus() }
           onRequestClose={this.closeModal}
           className="boxed-view__box"
           overlayClassName="boxed-view boxed-view--modal"
         >
         <form className="boxed-view__form" onSubmit={this.handleSubmit.bind(this)}>
-          {/* <input type="text" ref={(name) => { this.name = name; }} /> */}
-          <input type="text" ref={(name) => { this.name = name; }} />
+          <input type="text" ref={(title) => { this.title = title; }} />
           <button className="button">Add Section</button>
         </form>
         <button className="button button--default" onClick={this.closeModal}>Cancel</button>
