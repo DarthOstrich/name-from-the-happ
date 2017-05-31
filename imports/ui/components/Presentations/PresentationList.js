@@ -19,7 +19,9 @@ class PresentationList extends Component {
   componentDidMount() {
     this.presentationsTracker = Tracker.autorun(() => {
       Meteor.subscribe('presentationsPub');
-      const presentationsCollection = PresentationsCollection.find().fetch();
+      const sectionId = Session.get('sectionId');
+      console.log(sectionId);
+      const presentationsCollection = PresentationsCollection.find({ sectionId }).fetch();
       this.setState({ presentations: presentationsCollection });
       console.log('PresentationsCollection', this.state.presentations);
     });
