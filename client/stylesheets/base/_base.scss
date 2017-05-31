@@ -1,32 +1,42 @@
-html {
-  font-family: $text-font-stack;
-  font-size: 62.5%; // approx 10px
+html
+{
+    font-family: $text-font-stack;
+    font-size: 62.5%; // approx 10px
 }
 
-body {
-  background-color: $body-bg-color;
-  color: $body-default-color;
-  font-size: $base-font-size;
+body
+{
+    font-size: $base-font-size;
+
+    color: $body-default-color;
+    background-color: $body-bg-color;
 }
 
-h1 {
-  font-weight: 300;
-  margin-bottom: $space;
+h1
+{
+    font-weight: 300;
+
+    margin-bottom: $space;
 }
 
-p {
-  margin-bottom: $space;
+p
+{
+    margin-bottom: $space;
 }
 
-a {
-  color: $link-color;
+a
+{
+    color: $link-color;
 }
 
 [type=text],
 [type=email],
-[type=password] {
-  font-size: $base-font-size;
-  margin-bottom: $space;
-  padding: 1rem;
-  border: 1px solid $input-border;
+[type=password]
+{
+    font-size: $base-font-size;
+
+    margin-bottom: $space;
+    padding: 1rem;
+
+    border: 1px solid $input-border;
 }
