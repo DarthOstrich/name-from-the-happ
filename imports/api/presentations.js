@@ -14,8 +14,8 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   // Meteor method for inserting new Presentations
-  'presentations.insert': function (title, sectionId) { // eslint-disable-line func-names
-    // console.log('presentations insert method');
+  'presentations.insert': function (title) { // eslint-disable-line func-names
+    console.log('presentations insert method', title);
     // make sure user is logged in
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
@@ -31,7 +31,6 @@ Meteor.methods({
 
     PresentationsCollection.insert({
       title,
-      sectionId,
       userId: this.userId,
       updatedAt: moment().valueOf(),
     });
@@ -42,6 +41,15 @@ Meteor.methods({
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
+    new SimpleSchema({
+      _id: {
+        type: String,
+        min: 17,
+      },
+    }).validate({
+      _id,
+    });
+    PresentationsCollection.remove({ _id });
   },
 
   // Meteor method for updating Presenations

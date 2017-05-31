@@ -1,18 +1,58 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
+
+import PresentationListItem from './PresentationListItem';
+// import SectionListItem from './SectionListItem';
+
+// collections
+import PresentationsCollection from './../../../api/presentations';
 
 // components
+class PresentationList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      presentations: [],
+      sections: [],
+    };
+  }
+  componentDidMount() {
+    this.presentationsTracker = Tracker.autorun(() => {
+      Meteor.subscribe('presentationsPub');
+      // console.log('yo');
+      const presentationsCollection = PresentationsCollection.find().fetch();
+      this.setState({ presentations: presentationsCollection });
+      console.log('PresentationsCollection', this.state.presentations);
+    });
+  }
 
-const presentationList = () => (
-  <div className="container">
-    <h1>GWDA407</h1>
-    <ul>
-      <li>Presentation Title</li>
-      <li>Presentation Title</li>
-    </ul>
-    <button><Link to="/presentationadd">Add Presentation</Link></button>
-  </div>
+  componentWillUnmount() {
+    this.presentationsTracker.stop();
+  }
+
+  renderPresentationListItems() {
+    if (this.state.presentations.length === 0) {
+      return (
+        <div className="">
+          <p className="item__status-message">No Presentations Found</p>
+        </div>
+      );
+    }
+    return this.state.presentations.map((presentation) => {
+      return <PresentationListItem key={presentation._id} presentation={ presentation } />;
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderPresentationListItems()}
+      </div>
+    );
+  }
+
+}
+
   // END .container
-);
-
-export default presentationList;
+export default PresentationList;

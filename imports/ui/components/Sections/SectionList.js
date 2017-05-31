@@ -6,7 +6,6 @@ import { Tracker } from 'meteor/tracker';
 // import SectionList from './SectionList';
 import SectionListItem from './SectionListItem';
 
-
 // collections
 import SectionsCollection from './../../../api/sections';
 
