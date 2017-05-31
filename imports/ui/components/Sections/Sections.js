@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 // components
 import AddSection from './AddSection';
 import SectionList from './SectionList';

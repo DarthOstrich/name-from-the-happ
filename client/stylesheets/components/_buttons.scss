@@ -1,0 +1,96 @@
+.button {
+  font-size: $base-font-size;
+  padding: 1rem;
+  cursor: pointer;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: $white;
+  border: 0;
+  background-color: $button-bg;
+}
+
+// button modifier
+.button--link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+// we add these styles
+.button--pill {
+  background-color: transparent;
+  border: 1px solid $button-pill-color;
+  color: $button-pill-color;
+}
+
+.button--default {
+  background-color: $gallery;
+  color: $concrete;
+}
+
+.button--success {
+  background-color: $button-success;
+}
+
+.button--danger {
+  background-color: $button-danger;
+}
+
+//toggle slider
+.switch {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 24px;
+  // left:30%;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cccccc;
+  // -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: $white;
+  // -webkit-transition: .4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider::before {
+  // -webkit-transform: translateX(26px);
+  // -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 14px;
+}
+
+.slider.round::before {
+  border-radius: 70%;
+}

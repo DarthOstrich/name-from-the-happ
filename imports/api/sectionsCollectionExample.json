@@ -1,0 +1,60 @@
+{
+  name: 'GWDA-453',
+  owner: '14508jwhglk',
+  presentations: [
+    {
+      title: 'Birds',
+      skip: false,
+      next: false,
+      onDeck: false,
+      complete: false,
+      group: false,
+      presenters: [
+        { name: 'john doe' }, { name: 'jane done' }],
+      notes: '',
+    },
+  ],
+}
+/*global sections collection*/
+sections: {
+  0 : {
+    "_id": "123456789"
+    "name": "GWDA-407",
+    "owner": "14508jwhglk",
+    "presentations": []
+  }
+}
+
+presentations: {
+  0: {
+    "_id": "123456789",
+    "title": "Birds",
+    "skip": false,
+    "next": false,
+    "onDeck": false,
+    "complete": false,
+    "group": false,
+    "presenters": [],
+    "notes": ""
+  }
+}
+
+presenters : {
+  0: {
+    "name": {
+      "first": "John",
+      "last": "Doe"
+    }
+  }
+}
+
+/*Information needed for each class*/
+/*
+Students object
+shortName string
+owner string
+*/
+
+/*Information needed for each student object*/
+
+

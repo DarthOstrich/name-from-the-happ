@@ -1,0 +1,10 @@
+/*-------------------------------------
+| Use mixin: @include desktop() {} for formatting for media queries
+-------------------------------------*/
+
+// Media Queries
+@mixin desktop() {
+  @media (min-width: 50rem) {
+    @content;
+  }
+}

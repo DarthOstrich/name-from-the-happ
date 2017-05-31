@@ -1,13 +1,15 @@
 html
 {
-    font-family: Helvetica, Arial, sans-serif;
-    font-family: 'Varela Round', sans-serif;
+    font-family: $text-font-stack;
     font-size: 62.5%; // approx 10px
 }
 
 body
 {
     font-size: $base-font-size;
+
+    color: $body-default-color;
+    background-color: $body-bg-color;
 }
 
 h1
