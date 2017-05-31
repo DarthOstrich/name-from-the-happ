@@ -63,7 +63,7 @@ class PresentationList extends Component {
       <div>
         <div>
           <h1>Presentation List</h1>
-          {this.renderPresentationListItems()}
+          {this.renderPresentationListItems}
         </div>
       </div>
     );

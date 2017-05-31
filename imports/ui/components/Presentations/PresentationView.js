@@ -10,6 +10,17 @@ import { Students } from './PresentationList';
 // };
 
 class PresentationView extends Component {
+
+  componentDidMount() {
+    Meteor.subscribe('presentationsId');
+    const presentationsId = Session.get('presentationsId');
+    console.log(presentationsId);
+    const presentationsCollection = PresentationsCollection.find({ presentationsId }).fetch();
+    this.setState({ presentations: presentationsId });
+    console.log('PresentationsCollection', this.state.presentations);
+  }
+
+
   render() {
     return (
           <div>
@@ -19,9 +30,7 @@ class PresentationView extends Component {
                     <h2>Presenting</h2>
                     <h3>Presentation Title</h3>
                     <ul>
-                      <li>1</li>
-                      <li>2</li>
-                      <li>3</li>
+                      {this.PresentationsCollection }
                     </ul>
                     <div className="currPresNav">
                       <button>Edit</button>
