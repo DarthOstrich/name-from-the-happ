@@ -10,8 +10,10 @@ class SectionListItem extends Component {
   handleClickItem() {
     // console.log('handleClickItem');
     const id = this.props.section._id;
-    Session.set('currentSectionId', id);
+    Session.set('sectionId', id);
+    const currentSectionId = Session.get('sectionId');
     browserHistory.push(`/sections/${id}`);
+    console.log('sectionId', currentSectionId);
   }
   handleDelete() {
     const id = this.props.section._id;
