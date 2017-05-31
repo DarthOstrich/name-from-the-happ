@@ -1,40 +1,58 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
+
+import PresentationListItem from './PresentationListItem';
+// import SectionListItem from './SectionListItem';
 
 // collections
-import { Sections } from './../../api/sections';
+import PresentationsCollection from './../../../api/presentations';
 
-class presentationList extends Component {
+// components
+class PresentationList extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      links: [],
+      presentations: [],
+      sections: [],
     };
   }
   componentDidMount() {
-    console.log('componentDidMount SetionList');
-
-    this.linksTracker.autorun(() => {
-      const links = Sections.find().fetch();
-      this.setState({
-        links,
-      });
+    this.presentationsTracker = Tracker.autorun(() => {
+      Meteor.subscribe('presentationsPub');
+      // console.log('yo');
+      const presentationsCollection = PresentationsCollection.find().fetch();
+      this.setState({ presentations: presentationsCollection });
+      console.log('PresentationsCollection', this.state.presentations);
     });
   }
+
+  componentWillUnmount() {
+    this.presentationsTracker.stop();
+  }
+
+  renderPresentationListItems() {
+    if (this.state.presentations.length === 0) {
+      return (
+        <div className="">
+          <p className="item__status-message">No Presentations Found</p>
+        </div>
+      );
+    }
+    return this.state.presentations.map((presentation) => {
+      return <PresentationListItem key={presentation._id} presentation={ presentation } />;
+    });
+  }
+
   render() {
     return (
-      <div className="container">
-        <h1>{this.renderSectionId}</h1>
-        <ul>
-          <li>Presentation Title</li>
-          <li>Presentation Title</li>
-        </ul>
-        <button><Link to="/presentationadd">Add Presentation</Link></button>
+      <div>
+        {this.renderPresentationListItems()}
       </div>
-   // END .container
-  );
+    );
   }
+
 }
 
-export default presentationList;
+  // END .container
+export default PresentationList;
