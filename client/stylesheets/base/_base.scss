@@ -1,9 +1,11 @@
 html {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: $text-font-stack;
   font-size: 62.5%; // approx 10px
 }
 
 body {
+  background-color: $body-bg-color;
+  color: $body-default-color;
   font-size: $base-font-size;
 }
 
