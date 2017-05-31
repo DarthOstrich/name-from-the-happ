@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Meteor } from 'meteor/meteor';
 
-// collections
-// import from './../../api/sections';
+import PresentationList from './PresentationList';
 
-class AddSection extends Component {
+// collections
+class AddPresentation extends Component {
   constructor(props) {
     super(props);
 
@@ -32,12 +32,12 @@ class AddSection extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // console.log('handleSubmit');
+    console.log('handleSubmit');
 
     const title = this.title.value;
 
-    Meteor.call('sections.insert', title, (err) => {
-      // console.log('sections insert meteor call');
+    Meteor.call('presentations.insert', title, (err) => {
+      console.log('presentations insert meteor call', title);
       if (err) {
         this.setState({ error: err.reason });
       }
@@ -48,24 +48,28 @@ class AddSection extends Component {
   render() {
     return (
       <div>
-        <button className="button button--pill" onClick={ this.openModal }>Add Class</button>
+        <button className="button button--pill" onClick={ this.openModal }>Add Presentation</button>
+
         <Modal
           isOpen={ this.state.modalIsOpen }
-          contentLabel="Add Class"
-          onAfterOpen={ () => this.title.focus() }
+          contentLabel="Add Presentation"
+          onAfterOpen = { () => this.title.focus() }
           onRequestClose={this.closeModal}
           className="boxed-view__box"
-          overlayClassName="boxed-view boxed-view--modal"
-        >
+          overlayClassName="boxed-view boxed-view--modal">
         <form className="boxed-view__form" onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" ref={(title) => { this.title = title; }} />
-          <button className="button">Add Section</button>
+          <button className="button">Add Presentation</button>
+          <br/>
+            <button className="button button--default" onClick={this.closeModal}>Cancel</button>
         </form>
-        <button className="button button--default" onClick={this.closeModal}>Cancel</button>
       </Modal>
+
+      {/* <PresentationList /> */}
+
       </div>
     );
   }
 }
 
-export default AddSection;
+export default AddPresentation;
