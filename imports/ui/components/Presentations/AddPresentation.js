@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Meteor } from 'meteor/meteor';
+import { Session } from 'meteor/session';
 
-import PresentationList from './PresentationList';
+// components
+// import PresentationList from './PresentationList
 
 // collections
 class AddPresentation extends Component {
@@ -23,6 +25,7 @@ class AddPresentation extends Component {
   }
 
   openModal() {
+    // console.log(this.props.section);
     this.setState({ modalIsOpen: true });
   }
 
@@ -33,10 +36,9 @@ class AddPresentation extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log('handleSubmit');
-
+    const sectionId = Session.get('sectionId');
     const title = this.title.value;
-
-    Meteor.call('presentations.insert', title, (err) => {
+    Meteor.call('presentations.insert', title, sectionId, (err) => {
       console.log('presentations insert meteor call', title);
       if (err) {
         this.setState({ error: err.reason });
