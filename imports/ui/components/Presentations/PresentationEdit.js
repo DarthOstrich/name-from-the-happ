@@ -87,7 +87,7 @@ class PresentationEdit extends Component {
 {/* section for additional notes */}
         <label>Notes:
           <br />
-          <input type="text" ref={(notes) => { this.notes = notes; }}/>
+          <input type="textme" ref={(notes) => { this.notes = notes; }}/>
         </label>
   <br/>
 {/* Submit buttons */}
