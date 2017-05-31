@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
 
 import PresentationListItem from './PresentationListItem';
-// import SectionListItem from './SectionListItem';
 
 // collections
 import PresentationsCollection from './../../../api/presentations';
@@ -20,7 +19,6 @@ class PresentationList extends Component {
   componentDidMount() {
     this.presentationsTracker = Tracker.autorun(() => {
       Meteor.subscribe('presentationsPub');
-      // console.log('yo');
       const presentationsCollection = PresentationsCollection.find().fetch();
       this.setState({ presentations: presentationsCollection });
       console.log('PresentationsCollection', this.state.presentations);
@@ -29,6 +27,7 @@ class PresentationList extends Component {
 
   componentWillUnmount() {
     this.presentationsTracker.stop();
+    this.sectionsTracker.stop();
   }
 
   renderPresentationListItems() {
@@ -44,10 +43,26 @@ class PresentationList extends Component {
     });
   }
 
+  renderSectionListItems() {
+    if (this.state.sections.length === 0) {
+      return (
+        <div className="">
+          <p className="item__status-message">No Sections Found</p>
+        </div>
+      );
+    }
+    return this.state.sections.map((section) => {
+      return <SectionListItem key={section._id} section={ section } />;
+    });
+  }
+
   render() {
     return (
       <div>
-        {this.renderPresentationListItems()}
+        <div>
+          <h1>Presentation List</h1>
+          {this.renderPresentationListItems()}
+        </div>
       </div>
     );
   }
