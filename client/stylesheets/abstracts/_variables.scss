@@ -1,37 +1,65 @@
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass variables.
+
+// Please make sure to add variables to the proper section!
 // -----------------------------------------------------------------------------
 
 // Colors
+$cerulean: #00aecc;
+$alt-cerulean: darken($cerulean, 35%);
 $concrete: #f2f2f2;
 $white: #ffffff;
 $black: #000000;
-$cerulean: #00aecc;
 $coralred: #FF3B3B;
 $mossgreen: #B7E0AD;
+$light-grey: rgb(237, 237, 237) !default;
+$mid-grey: rgb(153, 153, 153) !default;
+$dark-grey: rgb(68, 68, 68) !default;
 
 ///Main brand color
-$brand-primary: $cerulean;
+$brand-primary: $cerulean !default;
+$brand-secondary: $concrete;
+
+// Fonts
+$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+// Font Sizes
+$base-font-size: 1.6rem;
+
+// Font Colors
+$text-color: $alt-cerulean !default;
+
 
 // Spacing
 $space: 1.4rem;
 
-// Button
-$button-bg: $cerulean;
-$button-color: $white;
-$button-pill-color: $cerulean;
-$button-danger: $coralred;
-$button-success: $mossgreen;
+// Body
+$body-bg-color: $brand-secondary;
+$body-default-color: $alt-cerulean;
 
-// Font sizes
-$base-font-size: 1.6rem;
+// Header
+
+// Page Content
+
 
 // Form inputs
 $input-border: $concrete;
+
+// Button
+$button-bg: $brand-primary;
+$button-color: $white;
+$button-pill-color: $brand-primary;
+$button-danger: $coralred;
+$button-success: $mossgreen;
+
 
 // Boxed view
 $boxed-view-overlay-bg: $concrete;
 $boxed-view-bg: $white;
 
+
+// Item
+
+
 // Links
-$link-color: $black;
+$link-color: $alt-cerulean;
