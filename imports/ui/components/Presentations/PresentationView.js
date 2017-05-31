@@ -19,9 +19,9 @@ class PresentationView extends Component {
                     <h2>Presenting</h2>
                     <h3>Presentation Title</h3>
                     <ul>
-                      <li>Name1</li>
-                      <li>Name2</li>
-                      <li>Name3</li>
+                      <li>1</li>
+                      <li>2</li>
+                      <li>3</li>
                     </ul>
                     <div className="currPresNav">
                       <button>Edit</button>
@@ -55,7 +55,7 @@ class PresentationView extends Component {
 
               </div>
 
-            <button>Add Presentation</button>
+            <button className="$brand-primary">Add Presentation</button>
 
               {/* END .container */}
             </div>

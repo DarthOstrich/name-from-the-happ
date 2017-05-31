@@ -3,15 +3,16 @@
 
 // Please make sure to add variables to the proper section!
 // -----------------------------------------------------------------------------
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 // Colors
 $cerulean: #00aecc;
 $alt-cerulean: darken($cerulean, 35%);
-$concrete: #F2F2F2;
-$white: #ffffff;
-$black: #000000;
-$coralred: #FF3B3B;
-$mossgreen: #B7E0AD;
+$concrete: #f2f2f2;
+$white: #fff;
+$black: #000;
+$coralred: #ff3b3b;
+$mossgreen: #b7e0ad;
 $light-grey: rgb(237, 237, 237) !default;
 $mid-grey: rgb(153, 153, 153) !default;
 $dark-grey: rgb(68, 68, 68) !default;
@@ -22,7 +23,7 @@ $brand-primary: $cerulean !default;
 $brand-secondary: $concrete;
 
 // Fonts
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: 'Varela Round', sans-serif !default;
 
 // Font Sizes
 $base-font-size: 1.6rem;
