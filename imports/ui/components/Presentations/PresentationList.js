@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
+import PropTypes from 'prop-types';
 
 import PresentationListItem from './PresentationListItem';
+import SectionListItem from './../Sections/SectionListItem';
+
+import AddPresentation from './AddPresentation';
+
 
 // collections
 import PresentationsCollection from './../../../api/presentations';
@@ -63,13 +68,20 @@ class PresentationList extends Component {
       <div>
         <div>
           <h1>Presentation List</h1>
+          <h2>A Dynamic Course Title Here</h2>
           {this.renderPresentationListItems()}
+        <AddPresentation />
         </div>
       </div>
     );
   }
 
 }
+
+// I added this in class
+PresentationList.propTypes = {
+  section: PropTypes.object.isRequired,
+};
 
   // END .container
 export default PresentationList;
