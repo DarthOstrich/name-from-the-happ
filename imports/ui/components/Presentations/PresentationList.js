@@ -41,13 +41,6 @@ class PresentationList extends Component {
   }
 
   renderPresentationListItems() {
-    if (this.state.presentations.length === 0) {
-      return (
-        <div className="boxed-view">
-          <p className="item__status-message">No Presentations Found</p>
-        </div>
-      );
-    }
     return this.state.presentations.map((presentation) => {
       return <PresentationListItem key={presentation._id} presentation={ presentation } />;
     });
@@ -56,8 +49,8 @@ class PresentationList extends Component {
   renderSectionName() {
     if (this.state.presentations.length === 0) {
       return (
-        <div className="boxed-view">
-          <p className="item__status-message">No Presentations Found</p>
+        <div className="">
+          <p className="">No Presentations Found</p>
         </div>
       );
     }
@@ -70,8 +63,10 @@ class PresentationList extends Component {
     return (
       <div className="boxed-view__box">
         <div className="">
-          <h1>Presentation List</h1>
-          {this.renderSectionName()}
+          <div className="preslistheader">
+            {this.renderSectionName()}
+            <h3>Presentation List</h3>
+          </div>
           {this.renderPresentationListItems()}
         </div>
       </div>

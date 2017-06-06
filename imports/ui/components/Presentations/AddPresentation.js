@@ -51,7 +51,7 @@ class AddPresentation extends Component {
   render() {
     return (
       <div className="boxed-view__box">
-        <button className="button button--pill" onClick={ this.openModal }>Add Presentation</button>
+        <button className="button button--pill addPresButton" onClick={ this.openModal }>Add Presentation</button>
 
         <Modal
           isOpen={ this.state.modalIsOpen }
