@@ -14,7 +14,7 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   // Meteor method for inserting new Presentations
-  'presentations.insert': function (title, sectionId) { // eslint-disable-line func-names
+  'presentations.insert': function (title, sectionId, sectionTitle) { // eslint-disable-line func-names
     // console.log('presentations insert method', title);
     // make sure user is logged in
     if (!this.userId) {
@@ -32,6 +32,7 @@ Meteor.methods({
     PresentationsCollection.insert({
       title,
       sectionId,
+      sectionTitle,
       userId: this.userId,
       updatedAt: moment().valueOf(),
     });

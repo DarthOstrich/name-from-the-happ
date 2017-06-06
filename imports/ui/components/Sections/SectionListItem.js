@@ -10,10 +10,15 @@ class SectionListItem extends Component {
   handleClickItem() {
     // console.log('handleClickItem');
     const id = this.props.section._id;
+    const title = this.props.section.title;
     Session.set('sectionId', id);
+    Session.set('sectionTitle', title);
     const currentSectionId = Session.get('sectionId');
+    const currentSectionTitle = Session.get('sectionTitle');
     browserHistory.push(`/sections/${id}`);
+    browserHistory.push(`/sections/${title}`);
     console.log('sectionId', currentSectionId);
+    console.log('sectionTitle', currentSectionTitle);
   }
   handleDelete() {
     const id = this.props.section._id;
