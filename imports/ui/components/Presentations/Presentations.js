@@ -6,9 +6,11 @@ import PresentationList from './PresentationList';
 class Presentations extends Component {
   render() {
     return (
-      <div>
+      <div className="boxed-view">
+      <div className="boxed-view__form">
         <PresentationList />
         <AddPresentation />
+      </div>
       </div>
     );
   }

@@ -37,8 +37,9 @@ class AddPresentation extends Component {
     e.preventDefault();
     console.log('handleSubmit');
     const sectionId = Session.get('sectionId');
+    const sectionTitle = Session.get('sectionTitle');
     const title = this.title.value;
-    Meteor.call('presentations.insert', title, sectionId, (err) => {
+    Meteor.call('presentations.insert', title, sectionId, sectionTitle, (err) => {
       console.log('presentations insert meteor call', title);
       if (err) {
         this.setState({ error: err.reason });
@@ -49,8 +50,8 @@ class AddPresentation extends Component {
 
   render() {
     return (
-      <div>
-        <button className="button button--pill" onClick={ this.openModal }>Add Presentation</button>
+      <div className="boxed-view__box">
+        <button className="button button--pill addPresButton" onClick={ this.openModal }>Add Presentation</button>
 
         <Modal
           isOpen={ this.state.modalIsOpen }
