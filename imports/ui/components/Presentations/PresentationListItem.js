@@ -11,12 +11,7 @@ class PresentationListItem extends Component {
     // console.log('handleClickItem');
     const id = this.props.presentation._id;
     Session.set('currentPresentationsId', id);
-    browserHistory.push('/PresentationEdit/');
-    const sectionTitle = this.props.presentation.Title;
-    Session.set('sectionTitle', sectionTitle);
-    const currentSectionTitle = Session.get('sectionTitle');
-    browserHistory.push(`/sections/${sectionTitle}`);
-    console.log('sectionTitle', currentSectionTitle);
+    browserHistory.push(`/PresentationEdit/${id}`);
   }
   render() {
     return (
