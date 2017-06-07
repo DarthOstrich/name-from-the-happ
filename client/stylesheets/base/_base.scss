@@ -14,9 +14,14 @@ body
 
 h1
 {
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: $space;
     padding: $space;
+    text-transform: uppercase;
+
+h2 {
+  font-weight: 700;
+  font-size: 2rem;
 }
 
 p
@@ -31,6 +36,7 @@ a
 
 [type=text],
 [type=email],
+<<<<<<< HEAD
 [type=password],
 textarea
 {
@@ -40,4 +46,17 @@ textarea
     padding: 1rem;
 
     border: 1px solid $input-border;
+=======
+[type=password] {
+  font-size: $base-font-size;
+  font-weight: 400;
+  margin-bottom: $space;
+  padding: 1rem;
+  border: 1px solid $input-border;
+>>>>>>> 09dae5307f613f6a4da83034147df31722d2c0d1
+}
+
+label {
+  font-weight: 600;
+  display: block;
 }
