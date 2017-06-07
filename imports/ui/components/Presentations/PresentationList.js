@@ -4,7 +4,7 @@ import { Tracker } from 'meteor/tracker';
 import { Session } from 'meteor/session';
 // import PropTypes from 'prop-types';
 import PresentationListItem from './PresentationListItem';
-// import PresentationSectionName from './PresentationSectionName';
+import PresentationSectionName from './PresentationSectionName';
 // import SectionsCollection from './../../../api/sections';
 // import AddPresentation from './AddPresentation';
 // collections
@@ -49,18 +49,18 @@ class PresentationList extends Component {
     });
   }
 
-  // renderSectionName() {
-  //   if (this.state.presentations.length === 0) {
-  //     return (
-  //       <div className="">
-  //         <p className="">No Presentations Found</p>
-  //       </div>
-  //     );
-  //   }
-  //   return this.state.presentations.map((presentation) => {
-  //   return <PresentationSectionName key={presentation.sectionTitle} presentation={ presentation } />;
-  //   });
-  // }
+  renderSectionName() {
+    if (this.state.presentations.length === 0) {
+      return (
+        <div className="">
+          <p className="">No Presentations Found</p>
+        </div>
+      );
+    }
+    return this.state.presentations.map((presentation) => {
+    return <PresentationSectionName key={presentation.sectionTitle} presentation={ presentation } />;
+    });
+  }
 
 
   render() {
@@ -68,8 +68,8 @@ class PresentationList extends Component {
       <div className="boxed-view__box">
         <div className="item__name">
           <div className="preslistheader">
-            {/* {this.renderSectionName()} */}
-            {this.state.sectionTitle}
+            {this.renderSectionName()}
+            {/* {this.state.sectionTitle} */}
             <h3>Presentation List</h3>
           </div>
           <div className="item-presentation">

@@ -163,7 +163,7 @@ class PresentationEdit extends Component {
           <input type="text" placeholder="Name 3" ref={(presId3) => { this.presId3 = presId3; }}/>
           <button type="submit" className="button button--danger">X</button>
             <br/>
-        </label>
+        {/* </form> */}
   <br/>
 {/* section for additional notes */}
         <label>Notes:
