@@ -18,6 +18,7 @@ h1
     margin-bottom: $space;
     padding: $space;
     text-transform: uppercase;
+}
 
 h2 {
   font-weight: 700;
@@ -54,6 +55,11 @@ textarea
   padding: 1rem;
   border: 1px solid $input-border;
 >>>>>>> 09dae5307f613f6a4da83034147df31722d2c0d1
+}
+
+label {
+  font-weight: 600;
+  display: block;
 }
 
 label {
