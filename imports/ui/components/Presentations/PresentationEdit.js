@@ -1,13 +1,47 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
+import { browserHistory } from 'react-router';
+import PropTypes from 'prop-types';
 
+
+// collections
+import PresentationsCollection from './../../../api/presentations';
 
 class PresentationEdit extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      title: '',
+      presentations: [],
+      sections: [],
+      presentationTitle: '',
     };
+  }
+
+  componentDidMount() {
+    this.presentationsTracker = Tracker.autorun(() => {
+      Meteor.subscribe('presentationsPub');
+      Meteor.subscribe('sectionsPub');
+      const presentationId = this.props.params._id;
+      // console.log('presenation id from params', presentationId);
+      const presentationsCollection =
+      PresentationsCollection.find({ _id: presentationId }).fetch();
+      if (presentationsCollection.length > 0) {
+        this.setState(
+          {
+            presentations: presentationsCollection[0],
+            presentationTitle: presentationsCollection[0].title,
+          },
+        );
+        console.log('PresentationsCollection', this.state.presentations);
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.presentationsTracker.stop();
+    this.sectionsTracker.stop();
   }
 
   handleSubmit(e) {
@@ -20,11 +54,23 @@ class PresentationEdit extends Component {
     });
   }
 
+  handleTitleChange(event) {
+    const title = event.target.value;
+    this.setState({ presentationTitle: title });
+  }
+
   handleDeletePresentation() {
     const { presentation } = this.props;
-    this.props.call('presentations.remove', presentation._id);
+    this.props.call('presentations.remove', presentationId);
     this.props.browserHistory.push('/presentations');
   }
+
+  handleUpdatePresentation() {
+    const { presentation } = this.props;
+    this.props.call('presentations.update', presentationId);
+    this.props.browserHistory.push('/presentations');
+  }
+
 
   render() {
     return (
@@ -57,10 +103,14 @@ class PresentationEdit extends Component {
   <br/>
 
 {/* section for inputting the presentation title */}
-        <label htmlFor="">Presentation Tile:
+        <label htmlFor="">Presentation Title:
           <br />
-          <input type="text" placeholder="Input Presentation Tile"
-            ref={(title) => { this.title = title; }}/>
+          <input
+            type="text"
+            ref={(title) => { this.title = title; }}
+            value={this.state.presentationTitle ? this.state.presentationTitle : undefined}
+            onChange={this.handleTitleChange.bind(this)}
+          />
         </label>
   <br/>
 {/* Toggle switch to see if it is a group project */}
@@ -92,10 +142,11 @@ class PresentationEdit extends Component {
         </label>
   <br/>
 {/* Submit buttons */}
-        <button type="submit" className="button button--success">Update</button>
+       <button type="submit" className="button button--success"
+         onClick={this.handleUpdatePresentation.bind(this)}>Update</button>
         <br/>
         <button type="submit" className="button button--danger"
-           onClick={this.handleDeletePresentation.bind(this)} >Delete</button>
+           onClick={this.handleDeletePresentation.bind(this)}>Delete</button>
       </form>
     </div>
 
@@ -105,5 +156,10 @@ class PresentationEdit extends Component {
   }
 // end of class
 }
+
+PresentationEdit.propTypes = {
+  params: PropTypes.object.isRequired,
+};
+
 
 export default PresentationEdit;

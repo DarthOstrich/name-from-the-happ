@@ -11,7 +11,7 @@ class PresentationListItem extends Component {
     // console.log('handleClickItem');
     const id = this.props.presentation._id;
     Session.set('currentPresentationsId', id);
-    browserHistory.push('/PresentationEdit/');
+    browserHistory.push(`/PresentationEdit/${id}`);
   }
   render() {
     return (

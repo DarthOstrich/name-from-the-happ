@@ -66,7 +66,7 @@ Meteor.startup(() => {
           onEnter={onEnterPrivatePage}
         />
         <Route
-          path="/presentationedit"
+          path="/presentationedit/:_id"
           component={PresentationEdit}
           onEnter={onEnterPrivatePage}
         />
