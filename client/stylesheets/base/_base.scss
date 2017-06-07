@@ -10,8 +10,14 @@ body {
 }
 
 h1 {
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: $space;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 2rem;
 }
 
 p {
@@ -26,7 +32,13 @@ a {
 [type=email],
 [type=password] {
   font-size: $base-font-size;
+  font-weight: 400;
   margin-bottom: $space;
   padding: 1rem;
   border: 1px solid $input-border;
+}
+
+label {
+  font-weight: 600;
+  display: block;
 }

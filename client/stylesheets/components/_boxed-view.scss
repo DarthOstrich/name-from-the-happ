@@ -2,7 +2,7 @@
   align-items: center;
   background: $boxed-view-overlay-bg;
   display: flex;
-  height: 100vh;
+  height: auto;
   justify-content: center;
   width: 100vw;
 }
@@ -11,10 +11,13 @@
   background-color: $boxed-view-bg;
   padding: 2.4rem;
   text-align: center;
-  width: 24rem;
+  width: 40rem;
+  margin: 0px auto;
+  margin-bottom: 50px;
 }
 
 .boxed-view__form {
+  text-align: left;
   display: flex;
   flex-direction: column;
 }
@@ -26,4 +29,13 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.PresTitle {
+  margin-bottom: -2rem;
+}
+
+.content-wrap {
+  margin-top: 4rem;
+  margin-bottom: 3rem;
 }
