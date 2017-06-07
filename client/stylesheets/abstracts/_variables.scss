@@ -17,6 +17,7 @@ $light-grey: rgb(237, 237, 237) !default;
 $mid-grey: rgb(153, 153, 153) !default;
 $dark-grey: rgb(68, 68, 68) !default;
 $gallery: #efefef;
+$orange: #ffab4a;
 
 ///Main brand color
 $brand-primary: $cerulean !default;
@@ -41,11 +42,12 @@ $body-default-color: $alt-cerulean;
 
 // Header
 
-// Page Content
 
+// Page Content
 
 // Form inputs
 $input-border: $concrete;
+$input-spacing: 1rem;
 
 // Button
 $button-bg: $brand-primary;
@@ -58,10 +60,12 @@ $button-success: $mossgreen;
 // Boxed view
 $boxed-view-overlay-bg: $concrete;
 $boxed-view-bg: $white;
+$boxed-view-border: $dark-grey;
 
 
 // Item
-
+$item-border-width: 4px;
+$item-text-color: $dark-grey;
 
 // Links
 $link-color: $alt-cerulean;

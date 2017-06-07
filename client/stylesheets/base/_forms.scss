@@ -4,9 +4,10 @@
 }
 
 .form__input {
-  flex-grow: 1;
+  flex: 1 100%;
+  width: 100%;
   padding: 0 $space;
-  border: 1px solid #e8e8e8;
+  border: 1px solid $light-grey;
 }
 
 .form__button {
