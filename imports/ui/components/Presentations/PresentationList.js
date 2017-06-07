@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
-
+// import PropTypes from 'prop-types';
 import PresentationListItem from './PresentationListItem';
-
+import PresentationSectionName from './PresentationSectionName';
+import SectionsCollection from './../../../api/sections';
+import AddPresentation from './AddPresentation';
 // collections
 import PresentationsCollection from './../../../api/presentations';
 
@@ -19,9 +21,15 @@ class PresentationList extends Component {
   componentDidMount() {
     this.presentationsTracker = Tracker.autorun(() => {
       Meteor.subscribe('presentationsPub');
+      Meteor.subscribe('sectionsPub');
       const sectionId = Session.get('sectionId');
-      console.log(sectionId);
-      const presentationsCollection = PresentationsCollection.find({ sectionId }).fetch();
+      const sectionTitle = Session.get('sectionTitle');
+      const sectionsCollection = SectionsCollection.find().fetch();
+      this.setState({ sections: sectionsCollection });
+      console.log('SectionsCollection', this.state.sections);
+      // console.log(sectionId);
+      const presentationsCollection =
+      PresentationsCollection.find({ sectionId, sectionTitle }).fetch();
       this.setState({ presentations: presentationsCollection });
       console.log('PresentationsCollection', this.state.presentations);
     });
@@ -33,36 +41,32 @@ class PresentationList extends Component {
   }
 
   renderPresentationListItems() {
-    if (this.state.presentations.length === 0) {
-      return (
-        <div className="">
-          <p className="item__status-message">No Presentations Found</p>
-        </div>
-      );
-    }
     return this.state.presentations.map((presentation) => {
       return <PresentationListItem key={presentation._id} presentation={ presentation } />;
     });
   }
 
-  renderSectionListItems() {
-    if (this.state.sections.length === 0) {
+  renderSectionName() {
+    if (this.state.presentations.length === 0) {
       return (
         <div className="">
-          <p className="item__status-message">No Sections Found</p>
+          <p className="">No Presentations Found</p>
         </div>
       );
     }
-    return this.state.sections.map((section) => {
-      return <SectionListItem key={section._id} section={ section } />;
+    return this.state.presentations.map((presentation) => {
+      return <PresentationSectionName key={presentation.sectionTitle} presentation={ presentation } />;
     });
   }
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>Presentation List</h1>
+      <div className="boxed-view__box">
+        <div className="">
+          <div className="preslistheader">
+            {this.renderSectionName()}
+            <h3>Presentation List</h3>
+          </div>
           {this.renderPresentationListItems()}
         </div>
       </div>
