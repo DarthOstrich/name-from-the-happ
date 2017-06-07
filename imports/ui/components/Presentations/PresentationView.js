@@ -1,19 +1,15 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Mongo } from 'meteor/mongo';
 import { Students } from './PresentationList';
 import PresentationListItem from './PresentationListItem';
+
 // components
 
 
 //collections
 
 import PresentationsCollection from './../../../api/presentations';
-
-// const renderStudents = function(students) {
-//   return students.map()
-//     return <p key={students._id}>{students.pres_id}{students.name} is next.</p>
-//   };
-// };
 
 class PresentationView extends Component {
     constructor(props) {
@@ -26,12 +22,15 @@ class PresentationView extends Component {
 
   componentDidMount() {
   this.presentationsTracker = Tracker.autorun(() => {
-    Meteor.subscribe('presentationsId');
-    const presentationsId = Session.get('presentationsId');
-    console.log(presentationsId);
-    const presentationsCollection = PresentationsCollection.find({ presentationsId }).fetch();
-    this.setState({ presentations: presentationsId });
-    console.log('PresentationsCollection', this.state.presentations);
+    console.log(this.props.params._id);
+    const _id = this.props.params._id;
+    Meteor.subscribe('presentationsPub');
+    // console.log(presentationsId);
+    const presentationsCollection = PresentationsCollection.find({ sectionId: _id }).fetch();
+    console.log(PresentationsCollection);
+
+    this.setState({ presentations: presentationsCollection });
+    // console.log('PresentationsCollection', this.state.presentations);
   });
   }
 
@@ -40,17 +39,31 @@ class PresentationView extends Component {
     this.sectionsTracker.stop();
   }
 
-  renderPresentationListItems() {
-    if (this.state.presentations.length === 0) {
-      return (
-        <div className="">
-          <p className="item__status-message">No Presentations Found</p>
-        </div>
-      );
-    }
-    return this.state.presentations.map((presentation) => {
-      return <PresentationListItem key={presentation._id} presentation={ presentation }/>;
-    });
+  // renderPresentationListItems() {
+  //   if (this.state.presentations.length === 0) {
+  //     return (
+  //       <div className="">
+  //         <p className="item__status-message">No Presentations Found</p>
+  //       </div>
+  //     );
+  //   }
+  //   return this.state.presentations.map((presentation) => {
+  //     return <PresentationListItem key={presentation._id} presentation={ presentation }/>;
+  //   });
+  // }
+
+  handleClickItem() {
+    // console.log('handleClickItem');
+    const id = this.props.section._id;
+    const title = this.props.section.title;
+    // Session.set('presentationId', id);
+    // Session.set('presentationTitle', title);
+    // const currentSectionId = Session.get('presentationId');
+    // const currentSectionTitle = Session.get('presentationTitle');
+    // browserHistory.push(`/presentation/${id}`);
+    // browserHistory.push(`/presentation/${title}`);
+    // console.log('presentationId', currentSectionId);
+    // console.log('presentationTitle', currentSectionTitle);
   }
 
 
@@ -61,12 +74,12 @@ class PresentationView extends Component {
               <div className>
                   <div className>
                     <h2>Presenting</h2>
-                    {this.renderPresentationListItems()}
-                    <h3>Presentation Title</h3>
+                      <div onClick={this.handleClickItem.bind(this)}>
+                      </div>
+                    <h3>{this.state.presentations[0] ? this.state.presentations[0].title : undefined}</h3>
                     <ul>
                     </ul>
                     <div className="currPresNav">
-                      {this.renderPresentationListItems()}
                       <button className="button--pill">Edit</button>
                       <button className="button--pill">Skip</button>
                       <button className="button--pill">Complete</button>
@@ -76,7 +89,7 @@ class PresentationView extends Component {
                   {/* END .currentPresenter */}
                 <div className="nextPresenter">
                   <h2>Up Next:</h2>
-                  {this.renderPresentationListItems()}
+                    <h3>{this.state.presentations[1] ? this.state.presentations[1].title : undefined}</h3>
                   <h2>Presentation Title</h2>
                   <ul>
 

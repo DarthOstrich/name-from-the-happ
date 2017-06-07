@@ -49,13 +49,15 @@ class PresentationList extends Component {
   renderSectionName() {
     if (this.state.presentations.length === 0) {
       return (
-        <div className="">
+        <div className="" >
           <p className="">No Presentations Found</p>
         </div>
       );
     }
     return this.state.presentations.map((presentation) => {
-      return <PresentationSectionName key={presentation.sectionTitle} presentation={ presentation } />;
+      return <PresentationSectionName key={presentation.sectionTitle}
+        presentation={ presentation }
+          />;
     });
   }
 

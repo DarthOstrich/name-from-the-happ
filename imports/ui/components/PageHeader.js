@@ -19,11 +19,11 @@ class PageHeader extends Component {
           </div>
         </header>
 
-        <ul>
-          <li><Link to="/presentationview">PresentationView</Link></li>
-          <li><Link to="/presentationedit">PresentationEdit</Link></li>
-          <li><Link to="/presentationlist">PresentationList</Link></li>
-          <li><Link to="/presentationadd">PresentationAdd</Link></li>
+        <ul className="navi">
+          <li><Link to="/presentationview">Presentation View</Link></li>
+          <li><Link to="/presentationedit">Presentation Edit</Link></li>
+          <li><Link to="/presentationlist">Presentation List</Link></li>
+          <li><Link to="/presentationadd">Presentation Add</Link></li>
         </ul>
 
       </div>

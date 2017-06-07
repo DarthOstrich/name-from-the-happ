@@ -56,7 +56,7 @@ Meteor.startup(() => {
           component={ PresentationList }
         />
         <Route
-          path="/presentationview"
+          path="/sections/:_id/presentationview/"
           component={ PresentationView }
           onEnter={onEnterPrivatePage}
         />
@@ -75,6 +75,13 @@ Meteor.startup(() => {
           component={Presentations}
           onEnter={onEnterPrivatePage}
         />
+
+        <Route
+          path="/presentation/:_id"
+          component={Presentations}
+          onEnter={onEnterPrivatePage}
+        />
+
         <Route path="*" component={ NotFound } />
       </Route>
     </Router>,

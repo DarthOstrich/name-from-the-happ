@@ -13,12 +13,15 @@ class PresentationListItem extends Component {
     Session.set('presentationsId', id);
     browserHistory.push('/PresentationEdit/');
   }
+
   render() {
     return (
       <div className="item">
         <div className="presentation">
+          <div>
             <h2>{this.props.presentation.title}</h2>
-            <button onClick={this.handleClickItem.bind(this)}>Edit</button>
+          </div>
+          <button onClick={this.handleClickItem.bind(this)}>Edit</button>
         </div>
       </div>
     );
