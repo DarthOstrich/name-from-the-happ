@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
+import { Session } from 'meteor/session';
 // import PropTypes from 'prop-types';
 import PresentationListItem from './PresentationListItem';
-import PresentationSectionName from './PresentationSectionName';
-import SectionsCollection from './../../../api/sections';
-import AddPresentation from './AddPresentation';
+// import PresentationSectionName from './PresentationSectionName';
+// import SectionsCollection from './../../../api/sections';
+// import AddPresentation from './AddPresentation';
 // collections
 import PresentationsCollection from './../../../api/presentations';
 
@@ -14,8 +15,8 @@ class PresentationList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sectionTitle: '',
       presentations: [],
-      sections: [],
     };
   }
   componentDidMount() {
@@ -24,12 +25,14 @@ class PresentationList extends Component {
       Meteor.subscribe('sectionsPub');
       const sectionId = Session.get('sectionId');
       const sectionTitle = Session.get('sectionTitle');
-      const sectionsCollection = SectionsCollection.find().fetch();
-      this.setState({ sections: sectionsCollection });
-      console.log('SectionsCollection', this.state.sections);
+      this.setState({ sectionTitle });
+      // const sectionsCollection = SectionsCollection.find().fetch();
+      // this.setState({ sections: sectionsCollection });
+      // console.log('SectionsCollection', this.state.sections);
       // console.log(sectionId);
       const presentationsCollection =
-      PresentationsCollection.find({ sectionId, sectionTitle }).fetch();
+      PresentationsCollection.find({ sectionId }).fetch();
+      console.log(presentationsCollection);
       this.setState({ presentations: presentationsCollection });
       console.log('PresentationsCollection', this.state.presentations);
     });
@@ -46,25 +49,27 @@ class PresentationList extends Component {
     });
   }
 
-  renderSectionName() {
-    if (this.state.presentations.length === 0) {
-      return (
-        <div className="item__status-message">
-          <p className="">No Presentations Found</p>
-        </div>
-      );
-    }
-    return this.state.presentations.map((presentation) => {
-      return <PresentationSectionName key={presentation.sectionTitle} presentation={ presentation } />;
-    });
-  }
+  // renderSectionName() {
+  //   if (this.state.presentations.length === 0) {
+  //     return (
+  //       <div className="">
+  //         <p className="">No Presentations Found</p>
+  //       </div>
+  //     );
+  //   }
+  //   return this.state.presentations.map((presentation) => {
+  //   return <PresentationSectionName key={presentation.sectionTitle} presentation={ presentation } />;
+  //   });
+  // }
+
 
   render() {
     return (
       <div className="boxed-view__box">
         <div className="item__name">
           <div className="preslistheader">
-            {this.renderSectionName()}
+            {/* {this.renderSectionName()} */}
+            {this.state.sectionTitle}
             <h3>Presentation List</h3>
           </div>
           <div className="item-presentation">
