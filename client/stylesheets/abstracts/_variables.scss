@@ -47,6 +47,7 @@ $body-default-color: $alt-cerulean;
 
 // Form inputs
 $input-border: $concrete;
+$input-spacing: 1rem;
 
 // Button
 $button-bg: $brand-primary;
@@ -62,7 +63,8 @@ $boxed-view-bg: $white;
 
 
 // Item
-
+$item-border-width: 4px;
+$item-text-color: $dark-grey;
 
 // Links
 $link-color: $alt-cerulean;

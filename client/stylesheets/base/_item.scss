@@ -1,0 +1,84 @@
+// Item List
+.item-list {
+  background-color: $white;
+  border: 1px solid $light-grey;
+  overflow-y: scroll;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.item-list__header {
+  display: flex;
+  flex-direction: column;
+  padding: $space;
+}
+
+// Empty Item
+.empty-item {
+  font-style: italic;
+  padding: $space;
+  text-align: center;
+}
+
+// Items
+.item {
+  border: $item-border-width solid transparent;
+  cursor: pointer;
+  margin-bottom: $space;
+  padding: $space;
+  transition: background-color 0.3s ease, border-left 0.3s ease;
+}
+
+
+.item:hover {
+  background-color: $light-grey;
+  border-left: $item-border-width solid $orange;
+}
+
+.item__name {
+  text-transform: capitalize;
+}
+
+.item__code {
+  text-transform: uppercase;
+}
+
+.item__message {
+  color: $item-text-color;
+}
+
+.item__status-message {
+  color: $item-text-color;
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+}
+
+.item__empty {
+  border: 10px solid $orange;
+}
+
+.item__form {
+  background-color: $brand-primary;
+}
+
+.item--selected,
+.item--selected:hover {
+  background-color: $light-grey;
+  border-left: $item-border-width solid $brand-primary;
+}
+
+.item__title {
+  font-weight: normal;
+  font-size: $base-font-size;
+  margin-bottom: 0.4rem;
+}
+
+.item--selected .item__title {
+  font-weight: bold;
+}
+
+.item__subtitle {
+  color: $dark-grey;
+  margin: 0;
+}
