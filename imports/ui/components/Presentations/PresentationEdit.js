@@ -41,7 +41,7 @@ class PresentationEdit extends Component {
 
   componentWillUnmount() {
     this.presentationsTracker.stop();
-    this.sectionsTracker.stop();
+    // this.sectionsTracker.stop();
   }
 
   handleSubmit(e) {

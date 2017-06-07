@@ -40,7 +40,7 @@ class PresentationList extends Component {
 
   componentWillUnmount() {
     this.presentationsTracker.stop();
-    this.sectionsTracker.stop();
+    // this.sectionsTracker.stop();
   }
 
   renderPresentationListItems() {
