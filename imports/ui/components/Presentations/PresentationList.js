@@ -49,7 +49,7 @@ class PresentationList extends Component {
   renderSectionName() {
     if (this.state.presentations.length === 0) {
       return (
-        <div className="">
+        <div className="item__status-message">
           <p className="">No Presentations Found</p>
         </div>
       );
