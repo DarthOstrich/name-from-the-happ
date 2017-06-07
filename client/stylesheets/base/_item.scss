@@ -30,7 +30,11 @@
 }
 
 
-.item:hover {
+.item-section:hover {
+  background-color: $light-grey;
+  border-left: $item-border-width solid $orange;
+}
+.item-presentation:hover {
   background-color: $light-grey;
   border-left: $item-border-width solid $orange;
 }

@@ -62,12 +62,14 @@ class PresentationList extends Component {
   render() {
     return (
       <div className="boxed-view__box">
-        <div className="">
+        <div className="item__name">
           <div className="preslistheader">
             {this.renderSectionName()}
             <h3>Presentation List</h3>
           </div>
-          {this.renderPresentationListItems()}
+          <div className="item-presentation">
+            {this.renderPresentationListItems()}
+          </div>
         </div>
       </div>
     );
