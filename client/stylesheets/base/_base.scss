@@ -15,8 +15,8 @@ body
 h1
 {
     font-weight: 300;
-
     margin-bottom: $space;
+    padding: $space;
 }
 
 p
@@ -31,10 +31,11 @@ a
 
 [type=text],
 [type=email],
-[type=password]
+[type=password],
+textarea
 {
     font-size: $base-font-size;
-
+    color: $body-default-color;
     margin-bottom: $space;
     padding: 1rem;
 

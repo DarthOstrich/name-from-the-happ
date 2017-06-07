@@ -49,7 +49,7 @@ class PresentationList extends Component {
   renderSectionName() {
     if (this.state.presentations.length === 0) {
       return (
-        <div className="">
+        <div className="item__status-message">
           <p className="">No Presentations Found</p>
         </div>
       );
@@ -62,12 +62,14 @@ class PresentationList extends Component {
   render() {
     return (
       <div className="boxed-view__box">
-        <div className="">
+        <div className="item__name">
           <div className="preslistheader">
             {this.renderSectionName()}
             <h3>Presentation List</h3>
           </div>
-          {this.renderPresentationListItems()}
+          <div className="item-presentation">
+            {this.renderPresentationListItems()}
+          </div>
         </div>
       </div>
     );

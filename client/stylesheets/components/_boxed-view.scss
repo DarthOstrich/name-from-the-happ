@@ -11,6 +11,7 @@
   background-color: $boxed-view-bg;
   text-align: center;
   width: 24rem;
+  padding: 2.4rem;
 }
 
 .boxed-view__form {
@@ -18,8 +19,8 @@
   flex-direction: column;
 }
 
-.boxed-view__modal {
-  background: fade-out($boxed-view-overlay-bg, 0.3);
+.ReactModal__Overlay--after-open {
+  background: fade-out($dark-grey, 0.3);
   position: fixed;
   top: 0;
   left: 0;
