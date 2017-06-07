@@ -32,7 +32,7 @@ class SectionListItem extends Component {
   }
   render() {
     return (
-      <div className="item">
+      <div className="item item__name item-section">
         <div className="section">
           <div onClick={this.handleClickItem.bind(this)}>
             <h2>{this.props.section.title}</h2>
