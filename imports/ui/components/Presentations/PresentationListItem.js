@@ -13,6 +13,7 @@ class PresentationListItem extends Component {
     Session.set('currentPresentationsId', id);
     browserHistory.push(`/PresentationEdit/${id}`);
   }
+
   render() {
     return (
       <div className="item">

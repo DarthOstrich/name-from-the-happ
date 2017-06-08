@@ -1,0 +1,27 @@
+.navi
+{
+    font-size: 1.3em;
+
+    display: inline-block;
+
+    list-style-type: none;
+
+    color: #999;
+}
+
+.navi li
+{
+    display: inline;
+
+    padding: 5px 5px 5px 5px;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+.navi li a:hover
+{
+    color: orange;
+}
